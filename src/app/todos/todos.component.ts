@@ -7,23 +7,39 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
   styleUrls: ['./todos.component.scss']
 })
 export class TodosComponent implements OnInit {
-  todos: any[];
-  dbList: AngularFireList<any>;
+
+  todoItems: any[];
+
+  
+  testArray: any[] = ["One","Two","Three"];
+  addTodo(inputString){
+
+  }
+
+  test(){
+    console.log(this.todoItems);
+  }
 
   constructor(db: AngularFireDatabase) {
-    this.dbList = db.list('/todos');
+    
 
-    db.list('/todos').valueChanges()
-    .subscribe( todos => {
-      this.todos = todos;
-      console.log(todos);
-    } );
+    db.list('/todos').valueChanges().subscribe( tdItem => {
+      this.todoItems = tdItem;
+      console.log(this.todoItems);
+    });
+    // this.dbList = db.list('/todos');
+
+    // db.list('/todos').valueChanges()
+    // .subscribe( todos => {
+    //   this.todos = todos;
+    //   console.log(todos);
+    // } );
     
   }
 
-  makeTodo(todoText){
-    this.dbList.push({todoName: todoText, completed: false });
-  }
+  // makeTodo(todoText){
+  //   this.dbList.push({todoName: todoText, completed: false });
+  // }
 
   ngOnInit() {
   }
