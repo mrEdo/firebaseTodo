@@ -1,0 +1,6 @@
+<h1>Todo Component</h1>
+<input type="text" #search>
+<button (click)="makeTodo(search.value)">Add Todo</button>
+<ul>
+  <li *ngFor="let td of todos">{{ td.todoName }}</li>
+</ul>
